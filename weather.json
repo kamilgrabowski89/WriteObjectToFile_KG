@@ -1,0 +1,29 @@
+[
+  {
+    "city": "Bydgoszcz",
+    "iconUrl": "www",
+    "temperature": 40.0,
+    "feelslikeC": 60.0,
+    "conditionText": "Slonecznie",
+    "lat": 54.54,
+    "lon": 21.23
+  },
+  {
+    "city": "Torun",
+    "iconUrl": "www",
+    "temperature": 0.0,
+    "feelslikeC": 0.0,
+    "conditionText": "Leje",
+    "lat": 0.0,
+    "lon": 0.0
+  },
+  {
+    "city": "Gdansk",
+    "iconUrl": "www",
+    "temperature": 30.0,
+    "feelslikeC": 50.0,
+    "conditionText": "Deszcz",
+    "lat": 20.2,
+    "lon": 20.2
+  }
+]
