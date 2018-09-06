@@ -53,9 +53,18 @@ public class Main {
 
         } catch (IOException e) {
 
-
         }
 
+        try {
+            Weather[] readWeather = objectMapper.readValue(filename, Weather[].class);
+            for (Weather w : readWeather) {
+                System.out.println(w.getCity());
+            }
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
     }
