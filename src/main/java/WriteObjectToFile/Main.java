@@ -1,5 +1,7 @@
 package WriteObjectToFile;
 
+import WriteObjectToFile.Weather;
+import WriteObjectToFile.WeatherService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
@@ -11,7 +13,16 @@ public class Main {
 
     public static void main(String[] args) {
 
-        List <Weather> weatherList = new ArrayList <Weather>();
+
+
+        WeatherService weatherService = new WeatherService(
+                "http://api.apixu.com/v1/current.json",
+                "d48c0d5e40054b6a9e571834181808"
+        );
+        weatherService.getCityWeaher("Paris");
+
+
+        List<Weather> weathers = new ArrayList<Weather>();
 
         Weather weather = new Weather(
                 "Bydgoszcz",
@@ -22,50 +33,38 @@ public class Main {
                 54.54,
                 21.23
         );
-
         Weather weather2 = new Weather(
-                "Torun",
-                "www",
-                0,
-                0,
-                "Leje",
-                0.0,
-                0.0
-        );
-
-        Weather weather3 = new Weather(
                 "Gdansk",
                 "www",
-                30,
-                50,
-                "Deszcz",
-                20.20,
-                20.20
+                40,
+                60,
+                "Slonecznie",
+                54.54,
+                21.23
         );
-        weatherList.add(weather);
-        weatherList.add(weather2);
-        weatherList.add(weather3);
+
+        weathers.add(weather);
+        weathers.add(weather2);
 
         ObjectMapper objectMapper = new ObjectMapper();
         File filename = new File("weather.json");
         try {
-            objectMapper.writeValue(filename, weatherList);
-
-        } catch (IOException e) {
-
-        }
-
-        try {
-            Weather[] readWeather = objectMapper.readValue(filename, Weather[].class);
-            for (Weather w : readWeather) {
-                System.out.println(w.getCity());
-            }
-
-
+            objectMapper.writeValue(filename, weathers);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
+        try {
+            Weather[] readWeather = objectMapper.readValue(filename, Weather[].class);
 
+            for (Weather w: readWeather){
+                System.out.println(w.getCity());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
+
+
+
